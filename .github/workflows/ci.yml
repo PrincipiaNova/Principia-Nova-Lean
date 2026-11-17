@@ -1,0 +1,21 @@
+name: CI
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    # Builds the 29 mathlib-roster files in PN/. The four physlean/ files are
+    # certified separately on a PhysLean workspace (see README) and are outside
+    # this build until that workspace's pin is recorded here.
+    name: Build certified proofs (PN, mathlib roster)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Get mathlib build cache
+        run: lake exe cache get
+      - name: Build (fails on any warning, so a `sorry` fails the build)
+        run: lake build --wfail
