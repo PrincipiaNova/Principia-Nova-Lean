@@ -1,0 +1,11 @@
+name = "pn"
+defaultTargets = ["PN"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "6201aea845cabc150786187e18e0ff60c9094ab8"
+
+[[lean_lib]]
+name = "PN"
+globs = ["PN.+"]
