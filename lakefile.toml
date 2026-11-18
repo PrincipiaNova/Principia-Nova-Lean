@@ -9,3 +9,7 @@ rev = "6201aea845cabc150786187e18e0ff60c9094ab8"
 [[lean_lib]]
 name = "PN"
 globs = ["PN.+"]
+# These files were certified before Lean's module system and intentionally
+# do not use it; this silences Lake's advisory notice so that `--wfail`
+# guards real warnings (a `sorry`, deprecated tactics, unused arguments).
+allowNonModules = true
