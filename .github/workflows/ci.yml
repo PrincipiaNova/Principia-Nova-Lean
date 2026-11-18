@@ -17,10 +17,10 @@ jobs:
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Get mathlib build cache
         run: lake exe cache get
-      - name: Build
+      - name: Build (fails on any warning)
         run: |
           set -o pipefail
-          lake build 2>&1 | tee build.log
+          lake build --wfail 2>&1 | tee build.log
       - name: Audit (no sorry, standard axioms only)
         run: |
           if grep -E "declaration uses .sorry.|sorryAx" build.log; then exit 1; fi
