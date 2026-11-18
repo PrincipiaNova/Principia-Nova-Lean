@@ -17,5 +17,12 @@ jobs:
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Get mathlib build cache
         run: lake exe cache get
-      - name: Build (fails on any warning, so a `sorry` fails the build)
-        run: lake build --wfail
+      - name: Build
+        run: |
+          set -o pipefail
+          lake build 2>&1 | tee build.log
+      - name: Audit (no sorry, standard axioms only)
+        run: |
+          if grep -E "declaration uses .sorry.|sorryAx" build.log; then exit 1; fi
+          if grep "depends on axioms" build.log | grep -v -E "axioms: \[(propext|Classical\.choice|Quot\.sound)(, (propext|Classical\.choice|Quot\.sound))*\]"; then exit 1; fi
+          echo "audited: $(grep -c -E "depends on axioms|does not depend on any axioms" build.log)"
