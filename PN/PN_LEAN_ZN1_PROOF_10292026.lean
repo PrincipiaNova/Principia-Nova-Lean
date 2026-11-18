@@ -103,7 +103,7 @@ theorem drift_law
         = v ⬝ (n ⬝ ∂v ⊹ n ⬝ n ⬝ n ⬝ V') ⊹ v ⬝ (n ⬝ ∂v ⊹ n ⬝ n ⬝ n ⬝ V')
           ⊹ (∂n ⬝ (n ⬝ n ⬝ V) ⊹ ∂n ⬝ (n ⬝ n ⬝ V)
              ⊹ (∂n ⬝ (n ⬝ n ⬝ V) ⊹ ∂n ⬝ (n ⬝ n ⬝ V))) := by
-      simp [A.D_add, A.D_mul, hChain, A.left_distrib, A.right_distrib,
+      simp [A.D_add, A.D_mul, hChain, A.left_distrib,
             A.add_assoc, A.add_comm, A.add_left_comm,
             A.mul_assoc, A.mul_comm, A.mul_left_comm]
     _ = v ⬝ (v ⬝ ∂n) ⊹ v ⬝ (v ⬝ ∂n)
@@ -112,9 +112,9 @@ theorem drift_law
       rw [hEL]
     _ = ∂n ⬝ (v ⬝ v ⊹ (n ⬝ n ⬝ V ⊹ n ⬝ n ⬝ V))
           ⊹ ∂n ⬝ (v ⬝ v ⊹ (n ⬝ n ⬝ V ⊹ n ⬝ n ⬝ V)) := by
-      simp [A.left_distrib, A.right_distrib,
-            A.add_assoc, A.add_comm, A.add_left_comm,
-            A.mul_assoc, A.mul_comm, A.mul_left_comm]
+      simp [A.left_distrib,
+            A.add_assoc, A.add_left_comm,
+            A.mul_assoc, A.mul_comm]
 
 /-- **Corollary: flat clock ⇒ exact conservation.**
     Where the clock does not vary, the ledger closes exactly. -/
@@ -143,8 +143,8 @@ theorem arena_law
   calc
     n ⬝ (C ⬝ ∂F ⊹ (Cdot ⬝ F ⊹ Cdot ⬝ F))
         = C ⬝ (n ⬝ ∂F) ⊹ (n ⬝ Cdot ⬝ F ⊹ n ⬝ Cdot ⬝ F) := by
-      simp [A.left_distrib, A.right_distrib,
-            A.add_assoc, A.add_comm, A.add_left_comm,
+      simp [A.left_distrib,
+            A.add_assoc, A.add_comm,
             A.mul_assoc, A.mul_comm, A.mul_left_comm]
     _ = C ⬝ (∂n ⬝ F ⊹ ∂n ⬝ F) ⊹ (n ⬝ Cdot ⬝ F ⊹ n ⬝ Cdot ⬝ F) := by
       rw [h]

@@ -104,7 +104,7 @@ theorem k_cocycle (hg0 : ∀ C, 0 < g C) (Cx Cy Cz : ℝ) :
 theorem k_gt_one_of_antitone (hg0 : ∀ C, 0 < g C) (hmono : Antitone g)
     (Cx Cy : ℝ) (hk : 1 < kfac g Cx Cy) : Cx < Cy := by
   by_contra h
-  push_neg at h
+  push Not at h
   have hle : g Cx ≤ g Cy := hmono h
   have : kfac g Cx Cy ≤ 1 := by
     unfold kfac

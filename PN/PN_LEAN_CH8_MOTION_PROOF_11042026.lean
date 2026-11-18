@@ -115,10 +115,11 @@ theorem flow_regime_climb (αρ t : ℝ) (hαρ : 0 < αρ)
   · have h := hC.comp_hasDerivAt t hflow
     have h2 : (innerSL ℝ (g (x t))) (αρ • g (x t))
         = αρ * ‖g (x t)‖ ^ 2 := by
-      simp [real_inner_smul_right, real_inner_self_eq_norm_sq]
+      simp
     rwa [h2] at h
   · positivity
 
+omit [InnerProductSpace ℝ E] in
 /-- **The climb stalls exactly where the landscape is flat.** -/
 theorem flow_stationary_iff (αρ : ℝ) (hαρ : 0 < αρ) (p : E) :
     αρ * ‖g p‖ ^ 2 = 0 ↔ g p = 0 := by

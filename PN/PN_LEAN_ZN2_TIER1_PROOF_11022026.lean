@@ -107,7 +107,7 @@ theorem sourced_continuity
           ⊹ (n ⬝ n ⬝ ∂t n ⬝ V ⊹ n ⬝ n ⬝ ∂t n ⬝ V
              ⊹ (n ⬝ n ⬝ ∂t n ⬝ V ⊹ n ⬝ n ⬝ ∂t n ⬝ V))
           ⊹ (n ⬝ n ⬝ n ⬝ (px ⬝ ∂t px) ⊹ n ⬝ n ⬝ n ⬝ (px ⬝ ∂t px)) := by
-      simp [A.Dt_add, A.Dt_mul, hVt, A.left_distrib, A.right_distrib,
+      simp [A.Dt_add, A.Dt_mul, hVt, A.left_distrib,
             A.add_assoc, A.add_comm, A.add_left_comm,
             A.mul_assoc, A.mul_comm, A.mul_left_comm]
     _ = pt ⬝ (pt ⬝ ∂t n ⊹ (n ⬝ n ⬝ (∂x n ⬝ px) ⊹ n ⬝ n ⬝ n ⬝ ∂x px))
@@ -124,7 +124,7 @@ theorem sourced_continuity
           = ∂x n ⬝ (px ⬝ pt) ⊹ n ⬝ (∂x px ⬝ pt ⊹ px ⬝ ∂x pt) := by
         rw [A.Dx_mul, A.Dx_mul]
       rw [hDxg]
-      simp [A.left_distrib, A.right_distrib,
+      simp [A.left_distrib,
             A.add_assoc, A.add_comm, A.add_left_comm,
             A.mul_assoc, A.mul_comm, A.mul_left_comm]
 

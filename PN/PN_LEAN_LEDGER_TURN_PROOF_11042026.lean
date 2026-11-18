@@ -188,7 +188,7 @@ theorem must_turn
     (t₁ : ℝ) (ht₁ : 0 ≤ t₁) (hnear : C t₁ ≤ Cmin + δ) :
     ∃ t, 0 ≤ t ∧ 0 < G t - Dl t := by
   by_contra hcon
-  push_neg at hcon
+  push Not at hcon
   -- the drift stays nonpositive, so the field never leaves the zone
   have hstay : ∀ u, t₁ ≤ u → C u ≤ Cmin + δ := by
     intro u hu

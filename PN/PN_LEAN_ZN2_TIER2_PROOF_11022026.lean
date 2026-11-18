@@ -70,7 +70,7 @@ theorem energy_time_deriv
   rw [hELa]
   push_cast
   field_simp
-  simp only [Pi.pow_apply, Pi.add_apply, Pi.mul_apply]
+  simp only [Pi.pow_apply, Pi.add_apply]
   ring
 
 /-- **∂x of the energy flux f = −n·px·pt.** -/
